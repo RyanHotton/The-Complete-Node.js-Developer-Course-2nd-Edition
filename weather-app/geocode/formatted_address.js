@@ -15,6 +15,9 @@ var get = (location, keepDiacritics = false) => {
     if (location.adminArea3.length > 0) {
       formattedAddress = appendAddressString(formattedAddress, location.adminArea3, ' ');
     }
+    if (location.postalCode.length > 0) {
+      formattedAddress = appendAddressString(formattedAddress, location.postalCode, ' ');
+    }
     if (location.adminArea1.length > 0) {
       formattedAddress = appendAddressString(formattedAddress, location.adminArea1);
     }

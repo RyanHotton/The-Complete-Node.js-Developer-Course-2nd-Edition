@@ -24,7 +24,7 @@ var geocodeAddress = (address, callback) => {
         });
       }
     } catch (e) {
-      callback('An error has occured.');
+      callback('geocode: An error has occured.');
     }
   });
 
