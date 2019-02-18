@@ -4,7 +4,7 @@ const formattedAddress = require('./formatted_address');
 
 var geocodeAddress = (address, callback) => {
 
-  const urlAddress = 'http://www.mapquestapi.com/geocoding/v1/address?key=6z9N5TVsSK3ConRKYx7p1bHq9y8rncRm&thumbMaps=false&maxResults=1&outFormat=json&location='
+  const urlAddress = 'http://www.mapquestapi.com/geocoding/v1/address?key=6z9N5TVsSK3ConRKYx7p1bHq9y8rncRm&thumbMaps=false&maxResults=1&outFormat=json&location=';
   var encodedAddress = encodeURIComponent(address);
 
   request({
