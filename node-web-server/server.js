@@ -1,5 +1,7 @@
 const fs = require('fs');
 const express = require('express');
+const favicon = require('serve-favicon');
+const path = require('path');
 // for udemy course purposes only: high security vulnerability is known
 const hbs = require('hbs');
 
@@ -30,6 +32,11 @@ app.use((req, res, next) => {
 // });
 
 app.use(express.static(__dirname + '/public'));
+try {
+  app.use(favicon(path.join(__dirname, 'public/images', 'favicon.ico')));
+} catch (e) {
+  console.log(JSON.stringify(e, undefined, 2));
+}
 
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear()
@@ -39,6 +46,7 @@ hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
 });
 
+// root page
 app.get('/', (req, res) => {
   res.render('home.hbs', {
     pageTitle: 'About Page',
@@ -46,13 +54,21 @@ app.get('/', (req, res) => {
   });
 });
 
+// about page
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page'
   });
 });
 
-// /bad
+// projects page
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects Page'
+  });
+});
+
+// bad page
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'Unable to handle request'
