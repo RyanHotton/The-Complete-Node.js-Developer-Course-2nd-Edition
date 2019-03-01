@@ -6,23 +6,11 @@ const randomstring = require("randomstring");
 
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
+const {todos, populateTodos, users, populateUsers} = require('./seed/seed');
 const {pp} = require('./../../playground/functions');
 
-const todos = [{
-  _id: new ObjectID(),
-  text: 'First test todo'
-}, {
-  _id: new ObjectID(),
-  text: 'Second test todo',
-  completed: true,
-  completedAt: 333
-}];
-
-beforeEach((done) => {
-  Todo.deleteMany({}).then(() => {
-    Todo.insertMany(todos);
-  }).then(() => done());
-});
+beforeEach(populateUsers);
+beforeEach(populateTodos);
 
 // POST /todos
 describe('POST /todos', () => {
